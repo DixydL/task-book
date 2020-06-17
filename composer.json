@@ -1,0 +1,8 @@
+{
+    "name": "dix/test-task",
+    "require": {
+        "nette/http": "^3.0",
+        "doctrine/orm": "^2.6.2",
+        "symfony/yaml": "2.*"
+    }
+}

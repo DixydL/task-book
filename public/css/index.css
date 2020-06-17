@@ -1,0 +1,31 @@
+body {
+    display: block;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+    background-color: #f7f7f7;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+.main {
+    margin: auto;
+    min-width: 360px;
+    max-width: 1164px;
+    padding: 10px;
+    width: 100%;
+}
+
+.content-block {
+    border-radius: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #ebeef5;
+    border-right: 1px solid #ebeef5;
+    border-left: 1px solid #ebeef5;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    padding: 10px;
+}
