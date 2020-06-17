@@ -36,7 +36,6 @@ class Router
 
     public function runController()
     {
-        var_dump($this->routePath);
         if (isset(self::$routesRegister[$this->routePath])) {
             list($controllerPath, $method)  = explode("@", self::$routesRegister[$this->routePath]);
             //$controllerPath  = "\\App\\".$controllerPath;

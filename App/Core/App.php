@@ -16,7 +16,14 @@ class App
     public function __construct($dbOrm)
     {
         self::$dbOrm = $dbOrm;
-        self::$request = new Request(new UrlScript($_SERVER['REQUEST_URI']), $_POST);
+        self::$request = new Request(
+            new UrlScript($_SERVER['REQUEST_URI']),
+            $_POST,
+            [],
+            [],
+            [],
+            $_SERVER['REQUEST_METHOD']
+        );
     }
 
     public function initRouters($fileRouters)
@@ -38,5 +45,25 @@ class App
     public static function request() : Request
     {
         return self::$request;
+    }
+
+    public static function login($user)
+    {
+        $_SESSION['user'] = $user;
+    }
+
+    public static function auth() : bool
+    {
+        return isset($_SESSION['user']) ? true : false;
+    }
+
+    public static function getUser()
+    {
+        return $_SESSION['user'];
+    }
+
+    public static function logOut()
+    {
+        unset($_SESSION['user']);
     }
 }

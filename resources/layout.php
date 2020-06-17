@@ -8,7 +8,17 @@
 <title>Задачник</title>
 </head>
 <body>
+    <div class="header">
+        <a href="/tasks/index">Задачник</a>
+        <a href="/auth">Авторизація</a>
+    </div>
     <div class="main">
+    <?php if (isset($_SESSION['alert'])) :?>
+        <div class="alert alert-danger" role="alert">
+             <?=$_SESSION['alert']?>
+        </div>
+        <?php unset($_SESSION['alert']);
+    endif;?>
     <?php include __DIR__ . "/" . $viewName . ".php" ?>
     </div>
 </body>

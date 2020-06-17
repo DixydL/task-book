@@ -5,6 +5,8 @@ use Doctrine\ORM\EntityManager;
 
 require_once "vendor/autoload.php";
 
+session_start();
+
 // Create a simple "default" Doctrine ORM configuration for Annotations
 $isDevMode = true;
 $proxyDir = null;
