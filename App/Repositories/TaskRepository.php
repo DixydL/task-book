@@ -8,10 +8,9 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class TaskRepository
 {
-    public function indexPagination($currentPage, $pageSize)
+    public function indexPagination($currentPage, $pageSize, $dbal)
     {
-        $dql = "SELECT t FROM " . Tasks::class . " t";
-        $query = App::DB()->createQuery($dql)
+        $query = App::DB()->createQuery($dbal)
                        ->setFirstResult(($currentPage - 1) * $pageSize)
                        ->setMaxResults($currentPage * $pageSize);
 

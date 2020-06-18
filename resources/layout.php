@@ -1,3 +1,6 @@
+<?php
+    use App\Core\App;
+?>
 
 <!DOCTYPE html>
 <html lang="ua">
@@ -10,9 +13,19 @@
 <body>
     <div class="header">
         <a href="/tasks/index">Задачник</a>
-        <a href="/auth">Авторизація</a>
+        <?php if (!App::isAuth()) : ?>
+            <a href="/auth">Авторизація</a>
+        <?php else : ?>
+            <a href="/log-out">Вихід(<?=App::getUser()->email?>)</a>
+        <?php endif;?>
     </div>
     <div class="main">
+    <?php if (isset($_SESSION['success'])) :?>
+        <div class="success alert-success" role="success">
+             <?=$_SESSION['success']?>
+        </div>
+        <?php unset($_SESSION['success']);
+    endif;?>
     <?php if (isset($_SESSION['alert'])) :?>
         <div class="alert alert-danger" role="alert">
              <?=$_SESSION['alert']?>

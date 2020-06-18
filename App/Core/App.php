@@ -16,9 +16,16 @@ class App
     public function __construct($dbOrm)
     {
         self::$dbOrm = $dbOrm;
+
+        $posts = [];
+        
+        foreach ($_POST as $key => $post) {
+            $posts[$key] = htmlspecialchars($post);
+        }
+
         self::$request = new Request(
             new UrlScript($_SERVER['REQUEST_URI']),
-            $_POST,
+            $posts,
             [],
             [],
             [],
@@ -49,17 +56,26 @@ class App
 
     public static function login($user)
     {
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = serialize($user);
     }
 
-    public static function auth() : bool
+    public static function isAuth(): bool
     {
         return isset($_SESSION['user']) ? true : false;
     }
 
+    public static function auth()
+    {
+        if (!self::isAuth()) {
+            $_SESSION['alert'] = "спочатку авторизуйтеся";
+            header('Location: /auth');
+            exit();
+        }
+    }
+
     public static function getUser()
     {
-        return $_SESSION['user'];
+        return unserialize($_SESSION['user']);
     }
 
     public static function logOut()

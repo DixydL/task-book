@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tasks
 {
+    const DONE = 1;
+    const UNDONE = 0;
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -44,5 +46,14 @@ class Tasks
     public function getUserName()
     {
         return $this->user_name;
+    }
+
+    public function getStatus()
+    {
+        if ($this->status === self::DONE) {
+            return 'виконано';
+        } else {
+            return 'не виконано';
+        }
     }
 }

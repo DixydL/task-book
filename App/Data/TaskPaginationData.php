@@ -10,9 +10,12 @@ class TaskPaginationData
 
     public PaginationData $page;
 
-    public function __construct($tasks, $page)
+    public SortData $sort;
+
+    public function __construct(Paginator $tasks, PaginationData $page, SortData $sort)
     {
         $this->tasks = $tasks;
         $this->page = $page;
+        $this->sort = $sort;
     }
 }
