@@ -40,7 +40,11 @@ class Router
             list($controllerPath, $method)  = explode("@", self::$routesRegister[$this->routePath]);
             //$controllerPath  = "\\App\\".$controllerPath;
             $controller = new $controllerPath();
-            $controller->{$method}();
+            try{
+                $controller->{$method}();
+            }catch(NotFound $err){
+                print_r($err);
+            }
         }
     }
 }
