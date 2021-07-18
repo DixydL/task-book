@@ -38,7 +38,6 @@ class Router
     {
         if (isset(self::$routesRegister[$this->routePath])) {
             list($controllerPath, $method)  = explode("@", self::$routesRegister[$this->routePath]);
-            //$controllerPath  = "\\App\\".$controllerPath;
             $controller = new $controllerPath();
             try{
                 $controller->{$method}();
